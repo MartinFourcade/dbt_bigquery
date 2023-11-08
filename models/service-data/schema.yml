@@ -93,33 +93,33 @@ models:
         description: Valor del pago
              
 
-  # - name: fact_orders
-  #   description: Datamart de Ordenes - Delivery
-  #   config:
-  #     schema: service_data
-  #   columns:
-  #     - name: order_purchase_timestamp
-  #       description: Momento de la compra de la orden
-  #     - name: order_delivered_customer_date
-  #       description: Fecha de la entrega de la orden
-  #     - name: order_estimated_delivery_date
-  #       description: Fecha estimada de entrega
-  #     - name: order_id
-  #       description: Id de la orden
-  #     - name: customer_id
-  #       description: Id del customer
-  #     - name: order_status
-  #       description: Estado de la Orden
-  #     - name: price
-  #       description: Monto de la Orden (Reales)
-  #     - name: freight_value
-  #       description: Costo del Delivery (Reales)
-  #     - name: order_gross_value
-  #       description: Monto total de la orden
-  #     - name: order_item_id 
-  #       description: Id del item de la orden
-  #     - name: seller_id
-  #       description: Id del seller
-  #     - name: product_id
-  #       description: Id del producto
+  - name: fact_orders
+    description: Datamart de Ordenes 
+    config:
+      schema: service_data_martin
+    columns:
+      - name: order_id
+        description: ID de la orden
+      - name: customer_id
+        description: Id del customer
+      - name: order_status
+        description: Estatus de la orden
+      - name: order_purchase_timestamp
+        description: Timestamp de la compra de la orden
+      - name: order_delivered_customer_date
+        description: Fecha de entrega de la orden
+      - name: order_estimated_delivery_date
+        description: Fecha estimada de entrega de la ordenn
+      - name: price
+        description: Monto de la Orden (Reales)
+      - name: freight_value
+        description: Costo del Flete (Reales)
+      - name: order_gross_value
+        description: Monto total de la orden
+      - name: order_item_id 
+        description: Id del item de la orden
+      - name: seller_id
+        description: Id del seller
+      - name: product_id
+        description: Id del producto
       
