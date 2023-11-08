@@ -1,0 +1,125 @@
+version: 2
+
+models:
+  - name: dim_time
+    description: Dimension de Tiempo
+    config:
+      schema: service_data_martin
+    columns:
+      - name: time_id
+        description: Id de la fecha
+      - name: time_date
+        description: Fecha
+      - name: time_month
+        description: Mes
+      - name: time_quarter
+        description: Quatrimestre (Q)
+      - name: time_year
+        description: Anio
+
+  - name: dim_sellers
+    config:
+      schema: service_data_martin
+    columns:
+      - name: seller_id
+        description: Id del seller
+      - name: seller_zip_code_prefix
+        description: Zip code del seller
+      - name: seller_city
+        description: Ciudad del seller
+      - name: seller_state
+        description: Estado del seller
+      - name: seller_geo_lat
+        description: Latitud de la ubicacion del seller
+      - name: seller_geo_lng
+        description: Longitud de la ubicacion del seller
+
+
+  - name: dim_customers
+    config:
+      schema: service_data_martin
+    columns:
+      - name: customer_id
+        description: Id del customer
+      - name: customer_unique_id
+        description: Id unico del customer
+      - name: customer_zip_code_prefix
+        description: Zip code del customer
+      - name: customer_city
+        description: Ciudad del customer
+      - name: customer_state
+        description: Estado del customer
+      - name: customer_geo_lng
+        description: Longitud de la ubicacion del seller
+      - name: customer_geo_lat
+        description: Latitud de la ubicacion del seller
+
+  - name: dim_products
+    config:
+      schema: service_data_martin
+    columns:
+      - name: product_id
+        description: Id del producto
+      - name: product_category_name
+        description: Nombre de la categoria del producto
+      - name: product_name_length
+        description: Largo del nombre del producto
+      - name: product_description_length
+        description: Largo de la categoria del producto
+      - name: seller_geo_lat
+        description: Latitud de la ubicacion del seller
+      - name: seller_geo_lng
+        description: Longitud de la ubicacion del seller
+  
+  - name: fact_order_payments
+    config:
+      schema: service_data_martin
+    columns:
+      - name: order_id
+        description: Id de la orden
+      - name: order_item_id
+        description: Id del item de la orden
+      - name: product_id
+        description: Id del producto
+      - name: seller_id
+        description: Id del seller
+      - name: customer_id
+        description: Id del customer
+      - name: payment_type
+        description: Tipo de pago
+      - name: payment_installments
+        description: Cuotas del pago
+      - name: payment_value
+        description: Valor del pago
+             
+
+  # - name: fact_orders
+  #   description: Datamart de Ordenes - Delivery
+  #   config:
+  #     schema: service_data
+  #   columns:
+  #     - name: order_purchase_timestamp
+  #       description: Momento de la compra de la orden
+  #     - name: order_delivered_customer_date
+  #       description: Fecha de la entrega de la orden
+  #     - name: order_estimated_delivery_date
+  #       description: Fecha estimada de entrega
+  #     - name: order_id
+  #       description: Id de la orden
+  #     - name: customer_id
+  #       description: Id del customer
+  #     - name: order_status
+  #       description: Estado de la Orden
+  #     - name: price
+  #       description: Monto de la Orden (Reales)
+  #     - name: freight_value
+  #       description: Costo del Delivery (Reales)
+  #     - name: order_gross_value
+  #       description: Monto total de la orden
+  #     - name: order_item_id 
+  #       description: Id del item de la orden
+  #     - name: seller_id
+  #       description: Id del seller
+  #     - name: product_id
+  #       description: Id del producto
+      

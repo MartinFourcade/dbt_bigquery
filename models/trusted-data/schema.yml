@@ -1,0 +1,326 @@
+version: 2
+
+models:
+  - name: customers
+    config:
+      schema: trusted_data_martinf2
+    columns:
+      - name: CUSTOMER_ID
+        description: Id del customer
+        tests:
+          - not_null
+      - name: CUSTOMER_UNIQUE_ID
+        description: Id unico del customer
+        tests:
+          - not_null
+      - name: CUSTOMER_ZIP_CODE_PREFIX
+        description: ZIP Code del customer
+      - name: CUSTOMER_CITY
+        description: Descripcion de la city del customer i.e (ACU, ICO, IPE)
+      - name: CUSTOMER_STATE
+        description: Estado del customer i.e (RN, CE, RS)
+  
+  - name: geolocation
+    config:
+      schema: trusted_data_martinf2
+    columns:
+      - name: GEOLOCATION_ZIP_CODE_PREFIX
+        description: Zip code de la geolocation
+        tests:
+          - not_null
+      - name: GEOLOCATION_LAT
+        description: Latitud de la geolozation
+      - name: GEOLOCATION_LNG
+        description: Longitud de la geolocation
+      - name: GEOLOCATION_CITY
+        description: City de la geolocation i.e (ARACAJU)
+      - name: GEOLOCATION_STATE
+        description: Estado de la geolocation i.e (RN, CE, RS)
+
+  - name: order_items
+    config:
+      schema: trusted_data_martinf2
+    columns:
+      - name: ORDER_ID
+        description: ID de la orden
+        tests:
+          - not_null
+      - name: ORDER_ITEM_ID
+        description: Cantidad de items asociados a la orden
+      - name: PRODUCT_ID
+        description: Id del producto
+      - name: SELLER_ID
+        description: Id del seller
+      - name: SHIPPING_LIMIT_DATE
+        description: Fecha limite de envio
+      - name: PRICE
+        description: Precio del item
+      - name: FREIGHT_VALUE
+        description: Precio del envio
+  
+  - name: order_payments
+    config:
+      schema: trusted_data_martinf2
+    columns:
+      - name: ORDER_ID
+        description: ID de la orden
+        tests:
+          - not_null
+      - name: PAYMENT_SEQUENTIAL
+        description: Secuencia del pago
+      - name: PAYMENT_TYPE
+        description: Medio de pago i.e (CREDIT_CARD)
+      - name: PAYMENT_INSTALLMENTS
+        description: Cantidad de cuotas
+      - name: PAYMENT_VALUE
+        description: Valor del pago
+
+  - name: order_reviews
+    config:
+      schema: trusted_data_martinf2
+    columns:
+      - name: ORDER_ID
+        description: ID de la orden
+        tests:
+          - not_null
+      - name: REVIEW_ID
+        description: Id de la review
+      - name: REVIEW_SCORE
+        description: Puntaje de la review
+      - name: REVIEW_COMMENT_TITLE
+        description: titulo de la review
+      - name: REVIEW_COMMENT_MESSAGE
+        description: Mensaje de la review
+      - name: REVIEW_ANSWER_TIMESTAMP
+        description: Tiempo de la respuesta a la review
+      - name: REVIEW_CREATION_DATE
+        description: Tiempo de la creacion de la review
+
+  - name: sellers
+    config:
+      schema: trusted_data_martinf2
+    columns:
+      - name: SELLER_ID
+        description: identificador del seller
+      - name: SELLER_ZIP_CODE_PREFIX
+        description: zipcode del seller
+      - name: SELLER_CITY
+        description: ciudad del seller
+      - name: SELLER_STATE
+        description: estado del seller
+  
+  - name: products
+    config:
+      schema: trusted_data_martinf2
+    columns:
+      - name: PRODUCT_ID
+        description: identificador del producto
+      - name: PRODUCT_CATEGORY_NAME
+        description: nombre de la categoria
+      - name: PRODUCT_NAME_LENGHT
+        description: caracteres del nombre del producto
+      - name: PRODUCT_DESCRIPTION_LENGHT
+        description: caracteres del nombre del producto   
+      - name: PRODUCT_PHOTOS_QTY
+        description: Q de imagenes asociada al producto
+      - name: PRODUCT_WEIGHT_G
+        description: peso del producto en gramos 
+      - name: PRODUCT_LENGTH_CM
+        description: largo del producto en centímetros 
+      - name: PRODUCT_HEIGHT_CM
+        description: alto del producto en centímetros
+      - name: PRODUCT_WIDTH_CM
+        description: ancho del producto en centímetros
+  
+  - name: orders
+    config:
+      schema: trusted_data_martinf2
+    columns:
+      - name: ORDER_ID
+        description: identificador de la orden
+        tests:
+          - not_null
+      - name: CUSTOMER_ID
+        description: identificador del cliente
+      - name: ORDER_STATUS
+        description: estado de la orden 
+      - name: ORDER_PURCHASE_TIMESTAMP
+        description: momento de compra (yyyy-mm-dd hh-mm-ss UTC) 
+      - name: ORDER_APPROVED_AT
+        description: momento de aprobación de la orden (yyyy-mm-dd hh-mm-ss UTC) 
+      - name: ORDER_DELIVERED_CARRIER_DATE
+        description: momento de entrega a flete (yyyy-mm-dd hh-mm-ss UTC)  
+      - name: ORDER_DELIVERED_CUSTOMER_DATE
+        description: momento de entrega a cliente (yyyy-mm-dd hh-mm-ss UTC)  
+      - name: ORDER_ESTIMATED_DELIVERY_DATE
+        description: momento de entrega estimado a cliente (yyyy-mm-dd hh-mm-ss UTC)
+ 
+  - name: product_category_name_translation
+    config:
+      schema: trusted_data_martinf2
+    columns:
+      - name: PRODUCT_CATEGORY_NAME
+        description: nombre de la categoría del producto
+      - name: PRODUCT_CATEGORY_NAME_ENGLISH
+        description: nombre en inglés de la categoría del producto
+
+
+  #     - name: store_name
+  #       description: Nombre de la Tienda
+  #     - name: store_segment
+  #       description: Nombre del Segmento
+  #     - name: store_plan_price
+  #       description: Precio del plan de la tienda
+  #     - name: store_latitude
+  #       description: Latitud de la Tienda
+  #     - name: store_longitude
+  #       description: Longitud de la Tienda
+
+  # - name: drivers
+  #   config:
+  #     schema: trusted_data_martinf2
+  #   columns:
+  #     - name: driver_id
+  #       description: Id del Driver
+  #       # tests:
+  #       #   - unique
+  #       #   - not_null
+  #     - name: driver_modal
+  #       description: Tipo de movilidad i.e (BIKER)
+  #     - name: driver_type
+  #       description: Tipo de contrato i.e (FREELANCE)
+
+  # - name: channels
+  #   config:
+  #     schema: trusted_data_martinf2
+  #   columns:
+  #     - name: channel_id
+  #       description: Id del Channel
+  #       # tests:
+  #       #   - unique
+  #       #   - not_null
+  #     - name: channel_name
+  #       description: Nombre del Channel
+  #     - name: channel_type
+  #       description: Tipo de Channel i.e (MARKETPLACE, OWN CHANNEL)
+
+  # - name: deliveries
+  #   config:
+  #     schema: trusted_data_martinf2
+  #   columns:
+  #     - name: delivery_id
+  #       description: Id del Delivery
+  #       # tests:
+  #       #   - unique
+  #       #   - not_null
+  #     - name: delivery_order_id
+  #       description: Order Id
+  #     - name: driver_id
+  #       description: Id del Driver
+  #     - name: delivery_distance_meters
+  #       description: Distancia del delivery en metros
+  #     - name: delivery_status
+  #       description: Estado del delivery i.e (DELIVERED, CANCELLED)
+
+  # - name: hubs
+  #   config:
+  #     schema: trusted_data_martinf2
+  #   columns:
+  #     - name: hub_id
+  #       description: Id del Hub
+  #       # tests:
+  #       #   - unique
+  #       #   - not_null
+  #     - name: hub_name
+  #       description: Nombre del hub
+  #     - name: hub_city
+  #       description: Ciudad del hub
+  #     - name: hub_state
+  #       description: Estado del hub i.e (PR, SP)
+  #     - name: hub_latitude
+  #       description: Latitud del hub
+  #     - name: hub_longitude
+  #       description: Longitud del hub
+
+
+  # - name: payments
+  #   config:
+  #     schema: trusted_data_martinf2
+  #   columns:
+  #     - name: payment_id
+  #       description: Id del Payment
+  #     - name: payment_order_id
+  #       description: Id de la Orden
+  #     - name: payment_amount
+  #       description: Monto del Pago
+  #     - name: payment_fee
+  #       description: Monto de los Fee
+  #     - name: payment_method
+  #       description: Metodo de Pago i.e (ONLINE, CREDIT, DEBIT)
+  #     - name: payment_status
+  #       description: Estado del Pago i.e (PAID)
+  
+  # - name: orders
+  #   config:
+  #     schema: trusted_data_martinf2
+  #   columns:
+  #     - name: order_id
+  #       description: Id de la Orden
+  #     - name: store_id
+  #       description: Id de la Tienda
+  #     - name: channel_id
+  #       description: Canal de la Orden
+  #     - name: payment_order_id
+  #       description: Id del Pago
+  #     - name: delivery_order_id
+  #       description: Id del Delivery
+  #     - name: order_status
+  #       description: Estado de la Orden i.e (FINISHED, CANCELED)
+  #     - name: order_id
+  #       description: Id de la Orden
+  #     - name: order_amount
+  #       description: Monto de la Orden
+  #     - name: order_delivery_fee
+  #       description: Fees del Orden
+  #     - name: order_delivery_cost
+  #       description: Costos de la Orden
+  #     - name: order_created_hour
+  #       description: Hora de creacion de la orden
+  #     - name: order_created_minute
+  #       description: Minuto de la creacion de la Orden
+  #     - name: order_created_day
+  #       description: Dia de la creacion de la Orden
+  #     - name: order_created_month
+  #       description: Mes de la creacion de la Orden
+  #     - name: order_created_year
+  #       description: Año de la creacion de la Orden
+  #     - name: order_moment_created
+  #       description: Fecha/hora de creacion de la Orden
+  #     - name: order_moment_accepted
+  #       description: Fecha/hora de aceptacion de Orden
+  #     - name: order_moment_ready
+  #       description: Fecha/hora de Orden lista
+  #     - name: order_moment_collected
+  #       description: Fecha/hora de recoleccion de la Orden
+  #     - name: order_moment_in_expedition
+  #       description: Fecha/hora de expedicion de la Orden
+  #     - name: order_moment_delivering
+  #       description: Fecha/hora del envio de la Orden
+  #     - name: order_moment_delivered
+  #       description: Fecha/hora de entrega de la Orden
+  #     - name: order_moment_finished
+  #       description: Fecha/hora de cierre de la Orden
+  #     - name: order_metric_collected_time
+  #       description: Tiempo de recoleccion
+  #     - name: order_metric_paused_time
+  #       description: Tiempo pausado
+  #     - name: order_metric_production_time
+  #       description: Tiempo de Produccion
+  #     - name: order_metric_walking_time
+  #       description: Tiempo de recorrido
+  #     - name: order_metric_expediton_speed_time
+  #       description: Tiempo de Expedicion
+  #     - name: order_metric_transit_time
+  #       description: Tiempo de Transito
+  #     - name: order_metric_cycle_time
+  #       description: Tiempo de Cycle
