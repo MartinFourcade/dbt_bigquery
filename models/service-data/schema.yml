@@ -2,7 +2,6 @@ version: 2
 
 models:
   - name: dim_time
-    description: Dimension de Tiempo
     config:
       schema: service_data_martin
     columns:
@@ -10,12 +9,14 @@ models:
         description: Id de la fecha
       - name: time_date
         description: Fecha
-      - name: time_month
-        description: Mes
-      - name: time_quarter
-        description: Quatrimestre (Q)
       - name: time_year
         description: Anio
+      - name: time_quarter
+        description: Quatrimestre (Q)
+      - name: time_month
+        description: Mes
+      
+     
 
   - name: dim_sellers
     config:

@@ -12,7 +12,7 @@ op.PAYMENT_INSTALLMENTS as payment_installments,
 op.PAYMENT_VALUE as payment_value
 
 FROM {{ref('order_payments')}} op
-LEFT JOIN {{ref('order_items')}} oi on op.order_id = op.order_id
+LEFT JOIN {{ref('order_items')}} oi on oi.order_id = op.order_id
 LEFT JOIN {{ref('orders')}} o on oi.order_id = o.order_id
 WHERE op.order_id is not null
 and o.customer_id is not null
