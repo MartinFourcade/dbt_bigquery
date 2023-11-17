@@ -9,7 +9,8 @@ SELECT
  h.GEOLOCATION_LNG as seller_geo_lng
 FROM {{ref('sellers')}} s
 LEFT JOIN {{ref('geolocation')}} h  
-    on s.seller_zip_code_prefix = h.GEOLOCATION_ZIP_CODE_PREFIX
-    and s.seller_city = h.GEOLOCATION_CITY
-    and s.seller_state = h.GEOLOCATION_STATE
-WHERE s.seller_id is not null
+    on s.SELLER_ZIP_CODE_PREFIX = h.GEOLOCATION_ZIP_CODE_PREFIX
+    and s.SELLER_CITY = h.GEOLOCATION_CITY
+    and s.SELLER_STATE = h.GEOLOCATION_STATE
+WHERE s.SELLER_ID is not null
+QUALIFY ROW_NUMBER() OVER (PARTITION BY s.SELLER_ID ORDER BY h.GEOLOCATION_LAT, h.GEOLOCATION_LNG DESC) = 1
