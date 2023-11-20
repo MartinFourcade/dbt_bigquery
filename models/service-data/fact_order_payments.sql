@@ -3,6 +3,7 @@
 SELECT
 
 op.ORDER_ID as order_id,
+o.ORDER_PURCHASE_TIMESTAMP as order_purchase_timestamp,
 oi.ORDER_ITEM_ID as order_item_id,
 oi.PRODUCT_ID as product_id,
 oi.SELLER_ID as seller_id, 
