@@ -110,7 +110,11 @@ models:
       - name: order_delivered_customer_date
         description: Fecha de entrega de la orden
       - name: order_estimated_delivery_date
-        description: Fecha estimada de entrega de la ordenn
+        description: Fecha estimada de entrega de la orden
+      - name: delivery_time_days
+        description: Tiempo en dias de la entrega
+      - name: delivery_time_estimation
+        description: Diferencia en dias entre la fecha estimada de entrega y la fecha de entrega
       - name: price
         description: Monto de la Orden (Reales)
       - name: freight_value
